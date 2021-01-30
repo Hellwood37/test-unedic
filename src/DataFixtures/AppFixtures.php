@@ -16,7 +16,7 @@ class AppFixtures extends Fixture
 
         for($d=0; $d < 10; $d++){
             $department = new Department();
-            $department->setName($faker->city)
+            $department->setName($faker->departmentName)
                         ->setCapacity(random_int(1000 , 10000));
 
             $manager->persist($department);

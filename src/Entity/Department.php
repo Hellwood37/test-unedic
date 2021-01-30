@@ -11,7 +11,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 /**
  * @ORM\Entity(repositoryClass=DepartmentRepository::class)
  * @ApiResource(
- *  itemOperations={"GET"={"openapi_context"={"summary"="Récupère tous les départements"}}, "PUT", "DELETE", "PATCH"}
+ *  collectionOperations={"GET"={"openapi_context"={"summary"="Récupère tous les départements"}}}
  *  
  * )
  */
