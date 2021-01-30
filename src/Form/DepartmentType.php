@@ -2,27 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\Student;
+use App\Entity\Department;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class StudentType extends AbstractType
+class DepartmentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('FirstName')
-            ->add('LastName')
-            ->add('NumEtud')
-            ->add('Department', null, ['choice_label' => 'Name'])
+            ->add('Name')
+            ->add('Capacity')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Student::class,
+            'data_class' => Department::class,
         ]);
     }
 }

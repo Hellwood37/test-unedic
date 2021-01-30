@@ -19,15 +19,17 @@ class AppFixtures extends Fixture
             $department->setName($faker->city)
                         ->setCapacity(random_int(1000 , 10000));
 
-                $manager->persist($department);
+            $manager->persist($department);
             
             for($s = 0; $s < 30; $s++){
 
                 $student = new Student();
-                $student->setFirstName($faker->FirstName)
-                        ->setLastName($faker->LastName)
+                $student->setFirstName($faker->firstName)
+                        ->setLastName($faker->lastName)
                         ->setNumEtud(random_int(1000 , 10000))
                         ->setDepartment($department);
+
+                $manager->persist($student);
             }
         }
 
