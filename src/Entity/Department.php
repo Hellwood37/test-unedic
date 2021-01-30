@@ -6,9 +6,14 @@ use App\Repository\DepartmentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=DepartmentRepository::class)
+ * @ApiResource(
+ *  itemOperations={"GET"={"openapi_context"={"summary"="Récupère tous les départements"}}, "PUT", "DELETE", "PATCH"}
+ *  
+ * )
  */
 class Department
 {

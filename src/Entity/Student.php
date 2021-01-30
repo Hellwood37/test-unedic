@@ -3,10 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\StudentRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=StudentRepository::class)
+ *  @ApiResource(
+ *  itemOperations={"GET"={"openapi_context"={"summary"="Récupère tous les étudiants inscrits dans un département"}}, "PUT", "DELETE", "PATCH"}
+ *  
+ * )
  */
 class Student
 {
