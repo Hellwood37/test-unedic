@@ -2,16 +2,22 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use App\Repository\StudentRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=StudentRepository::class)
  *  @ApiResource(
- *  collectionOperations={"GET"={"openapi_context"={"summary"="Récupère tous les étudiants inscrits dans un département"}}}
+ *  collectionOperations={"GET"={"openapi_context"={"summary"="Récupère tous les étudiants inscrits dans un département"}}},
  *  
+ *  normalizationContext={
+ *      "groups"={"students_read"}
+ *  }
  * )
+ * 
+
  */
 class Student
 {
@@ -19,27 +25,32 @@ class Student
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"students_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=25)
+     * @Groups({"students_read"})
      */
     private $FirstName;
 
     /**
      * @ORM\Column(type="string", length=25)
+     * @Groups({"students_read"})
      */
     private $LastName;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"students_read"})
      */
     private $NumEtud;
 
     /**
      * @ORM\ManyToOne(targetEntity=Department::class, inversedBy="Students")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"students_read"})
      */
     private $department;
 
